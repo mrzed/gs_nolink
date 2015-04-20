@@ -21,13 +21,12 @@ register_plugin(
 	'theme', //page type - on which admin tab to display
 	'strip_link'  //main function (administration)
 );
- 
+
 # add a link in the admin tab 'theme'
-add_action('theme-sidebar','createSideMenu',array($thisfile,'NoLink Desc'));
- 
+add_action('theme-sidebar', 'createSideMenu', array($thisfile, 'NoLink'));
+
 # functions
- 
-function remove_links($string){
+function strip_link($string){
     while(TRUE){
         @list($pre,$mid) = explode('<a',$string,2);
         @list($mid,$post) = explode('</a>',$mid,2);
@@ -35,4 +34,3 @@ function remove_links($string){
         if (is_null($post))return $string;
     }
 }
-?>
